@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+@{
+    await Html.RenderPartialAsync("DocumentHead");
+}
+<body class="skin-purple-light navbar-custom-menu">
+  <div class="wrapper">
+    @{
+        await Html.RenderPartialAsync("Header");
+        await Html.RenderPartialAsync("Sidebar");
+    }
+
+    <div class="content-wrapper">
+      <div class="content" id="body-content">
+        @RenderBody()
+        <hr />
+        @{
+            await Html.RenderPartialAsync("Footer");
+            @RenderSection("Scripts", required: false);
+            @RenderSection("ChartScripts", required: false);
+        }
+      </div>
+    </div>
+  </div>
+</body>
+</html>

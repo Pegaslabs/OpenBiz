@@ -1,0 +1,57 @@
+﻿<aside class="main-sidebar">
+  <section class="sidebar" style="height:auto;">
+    <form class="sidebar-form" action="#" method="get">
+      <div class="input-group">
+        <input type="text" name="search" class="form-control" placeholder="Search....." />
+        <span class="input-group-btn">
+          <button type="submit" class="btn btn-flat">
+            <i class="fa fa-search">
+            </i>
+          </button>
+        </span>
+      </div>
+    </form>
+    <ul class="sidebar-menu">
+      <li class="header">MAIN NAVIGATION</li>
+      <li class="active">
+        <a href="@Url.Action("Index","Dashboard")">
+          <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+        </a>
+      </li>
+      <li class="treeview">
+        <a href="#">
+          <i class="glyphicon glyphicon-stats"></i>
+          <span>Inventry Management</span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="@Url.Action("Index","Products")"><i class="fa fa-barcode"></i>Products</a></li>
+          <li><a href="@Url.Action("Index","ProductCategories")"><i class="fa fa-crop"></i>Product Categories</a></li>
+          <li><a href="@Url.Action("Index","ProductParts")"><i class="fa fa-puzzle-piece"></i>Product Parts</a></li>
+        </ul>
+      </li>
+
+      <li class="treeview">
+        <a href="#">
+          <i class="glyphicon glyphicon-home"></i>
+          <span>Warehouse Management</span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="@Url.Action("Index","Warehouses")"><i class="fa fa-home"></i>Warehouses</a></li>
+          <li><a href="@Url.Action("WarehouseBI","Warehouses")"><i class="fa fa-bar-chart-o"></i>Warehouse Capacity Check</a></li>
+        </ul>
+      </li>
+
+      <li class="treeview">
+        <a href="#">
+          <i class="glyphicon glyphicon-home"></i>
+          <span>Procurement Planning</span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="@Url.Action("Index","Suppliers")"><i class="fa fa-home"></i>Supplier</a></li>
+          <li><a href="@Url.Action("Index","Quotes")"><i class="fa fa-bar-chart-o"></i>Suppliers Quotes (Offers)</a></li>
+        </ul>
+      </li>
+         </ul>
+
+  </section>
+</aside>

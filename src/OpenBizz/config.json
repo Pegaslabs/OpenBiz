@@ -1,0 +1,8 @@
+﻿{
+  "Data": {
+    "SCMSContextConnection": "Server=AnE\\AE;Database=OpenBiz;Trusted_Connection=True;MultipleActiveResultSets=True"
+  },
+  "StaticFiles": {
+    "ProductImages": "/wwwroot/Uploads/Images/"
+  }
+}

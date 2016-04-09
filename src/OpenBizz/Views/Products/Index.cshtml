@@ -1,0 +1,131 @@
+@model IEnumerable<OpenBiz.Models.Product>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+  <a asp-action="Create">Create New</a>
+</p>
+<table class="table table-condensed table-bordered table-striped datatable dataTable" id="datatable">
+  <thead class="dataTables_header">
+    <tr>
+      <th class="search">
+        @Html.DisplayNameFor(model => model.ProductName)
+      </th>
+      <th class="search">
+        @Html.DisplayNameFor(model => model.DateOut)
+      </th>
+      <th class="search">
+        @Html.DisplayNameFor(model => model.Category)
+      </th>
+      <th class="search">
+        @Html.DisplayNameFor(model => model.ProductPrice)
+      </th>
+      <th class="search">
+        @Html.DisplayNameFor(model => model.QuantityOnHand)
+      </th>
+      @*<th>
+        Action
+      </th>*@
+    </tr>
+  </thead>
+
+  <tbody>
+    @*@{
+        IEnumerator<OpenBiz.Models.ProductImage> images = (IEnumerator<OpenBiz.Models.ProductImage>)ViewData["ProductImages"];
+        images.MoveNext();
+    }
+    @foreach (var item in Model)
+    {
+        <tr>
+          <td>
+            <img class="image img-bordered profile-user-img" style="display:inline;" src="~/Uploads/Images/@(item.ProductName)/@(images.Current.Hash)@(images.Current.Extension)" alt="@(item.ProductName+" - "+item.ProductDescription)" />
+            @Html.DisplayFor(modelItem => item.ProductName)
+          </td>
+          <td>
+            @Html.DisplayFor(modelItem => item.DateOut)
+          </td>
+          <td>
+            @Html.DisplayFor(modelItem => item.Category.CategoryName)
+          </td>
+          <td>
+            @Html.DisplayFor(modelItem => item.ProductPrice)
+          </td>
+          <td>
+            @Html.DisplayFor(modelItem => item.QuantityOnHand)
+          </td>
+          @*<td>
+            <a asp-action="Edit" asp-route-param="@item.ProductName.Replace(" ","-")">Edit</a> |
+            <a asp-action="Details" asp-route-param="@item.ProductName.Replace(" ","-")">Details</a> |
+            <a asp-action="Delete" asp-route-param="@item.ProductName.Replace(" ","-")">Delete</a>
+          </td>*@
+        @*</tr>
+        @images.MoveNext()
+    }*@
+  </tbody>
+  <tfoot class="dataTables_footer">
+    <tr>
+      <th class="search">
+        @Html.DisplayNameFor(model => model.ProductName)
+      </th>
+      <th class="search">
+        @Html.DisplayNameFor(model => model.DateOut)
+      </th>
+      <th class="search">
+        @Html.DisplayNameFor(model => model.Category)
+      </th>
+      <th class="search">
+        @Html.DisplayNameFor(model => model.ProductPrice)
+      </th>
+      <th class="search">
+        @Html.DisplayNameFor(model => model.QuantityOnHand)
+      </th>
+      @*<th>
+        Action
+      </th>*@
+    </tr>
+  </tfoot>
+</table>
+@section Scripts{
+  <script src="~/lib/datatables/media/js/jquery.dataTables.js"></script>
+  <script src="~/lib/datatables-scroller/js/dataTables.scroller.js"></script>
+  <script>
+    $(document).ready(function () {
+
+      $('#datatable tfoot .search').each(function () {
+        var title = $(this).text();
+        $(this).html('<input type="text" placeholder="' + title.trim(" ") + '"/>');
+      });
+
+      var oTable = $('#datatable').dataTable(
+        {
+          "serverSide": true,
+          "ajax": {
+            "type": "POST",
+            "url": '@Url.Action("GetProducts","Products")',
+            "contentType": 'application/json; charset=utf-8',
+            'data': function (data) { return data = JSON.stringify(data); }
+          },
+          "columns": [
+         { "data": "ProductName", "name": "ProductName" },
+         { "data": "DateOut", "name": "DateOut" },
+         { "data": "Category", "name": "Category" },
+         { "data": "ProductPrice", "name": "ProductPrice" },
+         { "data": "QuantityOnHand", "name": "QuantityOnHand" }
+          ],
+          "order": [0, "asc"]
+        });
+      oTable.columns.each(function () {
+        var that = this;
+
+        $('input', this.footer()).on('keyup change', function () {
+          that
+              .search(this.value)
+              .draw();
+        });
+      });
+    });
+  </script>
+}

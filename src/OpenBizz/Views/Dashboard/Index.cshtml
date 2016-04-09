@@ -1,0 +1,190 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+}
+<div class="row">
+  <div class="col-md-7">
+    <div class="box box-success">
+      <div class="box-header with-border">
+        <h3 class="box-title">Customer's Map</h3>
+      </div>
+      <div class="box-body no-padding">
+        <div class="row">
+          <div class="box-body">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="pad">
+                  <div id="world-map-markers" style="height: 325px;">
+                    <div class="jvectormap-container" style="width: 100%; height: 100%; overflow: hidden; position: relative;">
+                      <div style="height:100%;width:100%" id="map">
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="info-box bg-aqua">
+      <span class="info-box-icon"><i class="fa fa-bookmark-o"></i></span>
+      <div class="info-box-content">
+        <span class="info-box-text">Orders</span>
+        <span class="info-box-number">410</span>
+        <div class="progress">
+          <div class="progress-bar" style="width: 100%"></div>
+        </div>
+        <span class="progress-description">
+          Todays Report
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="info-box bg-green">
+      <span class="info-box-icon"><i class="fa fa-thumbs-o-up"></i></span>
+      <div class="info-box-content">
+        <span class="info-box-text">Sales</span>
+        <span class="info-box-number">41,410</span>
+        <div class="progress">
+          <div class="progress-bar" style="width: 1000%"></div>
+        </div>
+        <span class="progress-description">
+          Today's Total Sale
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="info-box bg-aqua">
+      <span class="info-box-icon"><i class="fa fa-users"></i></span>
+      <div class="info-box-content">
+        <span class="info-box-text">Employees</span>
+        <span class="info-box-number">310</span>
+        <div class="progress">
+          <div class="progress-bar" style="width: 100%"></div>
+        </div>
+        <span class="progress-description">
+          Hired
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="info-box bg-green">
+      <span class="info-box-icon"><i class="fa fa-recycle"></i></span>
+      <div class="info-box-content">
+        <span class="info-box-text">Recovery Amount</span>
+        <span class="info-box-number">41,410</span>
+        <div class="progress">
+          <div class="progress-bar" style="width: 70%"></div>
+        </div>
+        <span class="progress-description">
+          Today's Total Recovery
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title">Inventory Forecast</h3>
+        <div class="box-tools pull-right">
+          <button class="btn btn-box-tool" type="button" data-widget="collapse">
+            <i class="fa fa-minus"></i>
+          </button>
+          <button class="btn btn-box-tool" type="button" data-widget="remove"><i class="fa fa-times"></i></button>
+        </div>
+      </div>
+      <div class="box-body">
+        <div class="chart">
+          <div width="629" height="250" id="IFChart" style="width: 629px; height: 250px;"></div>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="box box-danger">
+        <div class="box-header with-border">
+          <h3 class="box-title">Sales</h3>
+          <div class="box-tools pull-right">
+            <button class="btn btn-box-tool" type="button" data-widget="collapse">
+              <i class="fa fa-minus"></i>
+            </button>
+            <button class="btn btn-box-tool" type="button" data-widget="remove"><i class="fa fa-times"></i></button>
+          </div>
+        </div>
+        <div class="box-body">
+          <div width="649" height="324" id="pChart" style="width: 649px; height: 324px;"></div>
+        </div>
+        <!-- /.box-body -->
+      </div>
+      <!-- /.box -->
+    </div>
+    </div>
+
+@*@section ChartScripts{
+  @Scripts.Render("~/bundles/BI")
+  <script type="text/javascript" language="javascript">
+    $(document).ready(function () {
+      $("#IFChart").dxChart({
+        dataSource: @Html.Raw(ViewBag.json.ToString()),
+        series: [
+            { argumentField: "ProductName",valueField: "Quantity",type:"bar" }
+        ]});
+
+      });
+
+      var pieChartDataSource = [
+          { category: 'Oceania', value: 35 },
+          { category: 'Africa', value: 1016 },
+          { category: 'Americas', value: 936 },
+          { category: 'Asia', value: 4149 },
+          { category: 'Europe', value: 728 }
+      ];
+
+      $(function () {
+        $("#pChart").dxPieChart({
+          dataSource: pieChartDataSource,
+          series: {
+            argumentField: 'category',
+            valueField: 'value',
+            label: {
+              visible: true,
+              connector: {
+                visible: true
+              }
+            }
+          },
+          pathModified: true,
+          tooltip: {
+            enabled: true,
+            percentPrecision: 2,
+            customizeTooltip: function (value) {
+              return {
+                text: value.percentText
+              };
+            }
+          },
+          title: {
+            text: 'Sales by Continent (in millions)'
+          },
+          legend: {
+            horizontalAlignment: 'center',
+            verticalAlignment: 'bottom'
+          }
+        });
+      });
+   
+  </script>
+}*@

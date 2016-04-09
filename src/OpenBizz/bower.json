@@ -1,0 +1,36 @@
+{
+  "name": "bower",
+  "authors": [
+    "Ahmed Rehan <ar27111994@gmail.com>"
+  ],
+  "description": "front-end package manager",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "admin-lte": "*",
+    "bootstrap": "3.3.5",
+    "bootstrap-datepicker": "1.4.1",
+    "d3": "3.5.6",
+    "font-awesome": "4.4.0",
+    "jquery": "2.1.4",
+    "jquery-validation": "1.14.0",
+    "jquery-validation-unobtrusive": "3.2.5",
+    "modernizr": "3.0.0",
+    "patternfly": "3.2.0",
+    "datatables-scroller": "1.4.1"
+  },
+  "resolutions": {
+    "font-awesome": "4.4.0",
+    "d3": "3.5.6",
+    "bootstrap-datepicker": "1.4.1"
+  }
+}

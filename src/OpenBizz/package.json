@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "gulp-sass": "2.2.0"
+  },
+  "gulp": "~3.8.11",
+  "name": "OpenBiz",
+  "private": true,
+  "version": "1.0.0"
+}

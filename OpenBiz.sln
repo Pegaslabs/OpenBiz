@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DE893BFB-9B17-4D53-889D-2B3710BA216A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9AD77190-BD2B-4CFB-AF6F-9CBB5681435D}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "OpenBiz", "src\OpenBizz\OpenBiz.xproj", "{DF6A1A9F-F027-411B-BC07-5D14693D1321}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DF6A1A9F-F027-411B-BC07-5D14693D1321}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF6A1A9F-F027-411B-BC07-5D14693D1321}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF6A1A9F-F027-411B-BC07-5D14693D1321}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF6A1A9F-F027-411B-BC07-5D14693D1321}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DF6A1A9F-F027-411B-BC07-5D14693D1321} = {DE893BFB-9B17-4D53-889D-2B3710BA216A}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,14 @@
+﻿<!DOCTYPE html>
+<html>
+@{
+    Html.RenderPartial("DocumentHead");
+}
+<body style="width:100%; background:url(../../../Content/Images/SCM.jpg); background-size:cover">
+  @RenderBody()
+  <footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+  </footer>
+</body>
+</html>
